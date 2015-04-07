@@ -214,14 +214,14 @@ class URRobot(object):
                 return
 
     def _wait_for_move_radius(self, radius, target):
-        print("Wait move with radius")
+        #print("Wait move with radius")
         target = m3d.Transform(target)
         while True:
             if not self.is_running():
                 raise RobotException("Robot stopped")
             pose = self.get_pose(wait=True)
             dist = pose.dist(target)
-            print("dist is ", dist, radius)
+            #print("dist is ", dist, radius)
             if (dist < radius) or not self.secmon.is_program_running():
                 self.logger.debug("move has ended")
                 return

@@ -257,17 +257,18 @@ class SecondaryMonitor(Thread):
 
             self.lastpacket_timestamp = time.time() 
 
-            if self._dict["RobotModeData"]["robotMode"] == 0 \
-                            and self._dict["RobotModeData"]["isRealRobotEnabled"] == True \
-                            and self._dict["RobotModeData"]["isEmergencyStopped"] == False \
-                            and self._dict["RobotModeData"]["isSecurityStopped"] == False \
-                            and self._dict["RobotModeData"]["isRobotConnected"] == True \
-                            and self._dict["RobotModeData"]["isPowerOnRobot"] == True:
-                self.running = True
-            else:
-                if self.running == True:
-                    self.logger.error("Robot not running: " + str( self._dict["RobotModeData"]))
-                self.running = False
+            # if self._dict["RobotModeData"]["robotMode"] == 0 \
+            #                 and self._dict["RobotModeData"]["isRealRobotEnabled"] == True \
+            #                 and self._dict["RobotModeData"]["isEmergencyStopped"] == False \
+            #                 and self._dict["RobotModeData"]["isSecurityStopped"] == False \
+            #                 and self._dict["RobotModeData"]["isRobotConnected"] == True \
+            #                 and self._dict["RobotModeData"]["isPowerOnRobot"] == True:
+            #     self.running = True
+            # else:
+            #     if self.running == True:
+            #         self.logger.error("Robot not running: " + str( self._dict["RobotModeData"]))
+            #     self.running = False
+            self.running = True
             with self._dataEvent:
                 #print("X: new data")
                 self._dataEvent.notifyAll()
